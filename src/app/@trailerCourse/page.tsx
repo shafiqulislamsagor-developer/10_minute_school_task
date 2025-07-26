@@ -1,5 +1,5 @@
 import CourseCtaPrice from "@/components/CourseCtaPrice";
-import CourseTrailer from "@/components/CourseTrailer";
+import { CourseTrailer } from "@/components/CourseTrailer";
 
 export default function page() {
   return (
