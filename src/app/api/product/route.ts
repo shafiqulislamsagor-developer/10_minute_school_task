@@ -5,7 +5,7 @@ export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const lang = searchParams.get("lang") || "en";
 
-  const url = `https://api.10minuteschool.com/discovery-service/api/v1/products/ielts-course?lang=${lang}`;
+  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/products/ielts-course?lang=${lang}`;
 
   try {
     const res = await fetch(url, {
