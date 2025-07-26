@@ -1,7 +1,6 @@
 "use client";
-
+import { useProduct } from "@/app/api/useProduct";
 import { Section } from "@/redux/model/publicQueryModel";
-import { useGetIELtsProductQuery } from "@/redux/query/PublicQuery";
 import { CheckCheck } from "lucide-react";
 import Title from "./shared/Title";
 interface Pointer {
@@ -15,10 +14,10 @@ interface ExtendedSection extends Section {
   name: string;
 }
 export default function CourseLearn() {
-  const { data, isLoading } = useGetIELtsProductQuery();
+  const { data, isLoading } = useProduct();
   if (isLoading) return <h1>Loading...</h1>;
 
-  const sections = data?.data?.sections as ExtendedSection[] | undefined;
+  const sections = data?.sections as ExtendedSection[] | undefined;
 
   const LearnPointerSection = sections?.find(
     (item) => item.type === "pointers"

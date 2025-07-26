@@ -1,6 +1,5 @@
 "use client";
-
-import { useGetIELtsProductQuery } from "@/redux/query/PublicQuery";
+import { useProduct } from "@/app/api/useProduct";
 import Image from "next/image";
 
 interface Instructor {
@@ -11,10 +10,10 @@ interface Instructor {
 }
 
 export default function CourseHeader() {
-  const { data, isLoading } = useGetIELtsProductQuery();
+  const { data, isLoading } = useProduct();
   if (isLoading) return <h1>Loading...</h1>;
 
-  const { title, description, sections } = data?.data || {};
+  const { title, description, sections } = data || {};
 
   const instructorsSection = sections?.find(
     (item) => item.type === "instructors"

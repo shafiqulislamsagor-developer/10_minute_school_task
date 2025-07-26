@@ -1,12 +1,11 @@
 "use client";
-
-import { useGetIELtsProductQuery } from "@/redux/query/PublicQuery";
+import { useProduct } from "@/app/api/useProduct";
 import Image from "next/image";
 import Button from "./shared/Button";
 import Title from "./shared/Title";
 
 export default function CourseCtaPrice() {
-  const { data, isLoading } = useGetIELtsProductQuery();
+  const { data, isLoading } = useProduct();
 
   if (isLoading) return <h1>Loading...</h1>;
 
@@ -14,7 +13,7 @@ export default function CourseCtaPrice() {
     <div className="w-[95%] mx-auto">
       <Title>এই কোর্সে যা থাকছে</Title>
       <div className="mt-5">
-        {data?.data.checklist.map((item) => {
+        {data?.checklist.map((item) => {
           return (
             <p
               key={item.id}
@@ -27,7 +26,7 @@ export default function CourseCtaPrice() {
         })}
       </div>
       <h1 className="text-3xl mt-5 font-bold">৳1000</h1>
-      <Button className="mt-2 w-full py-2">{data?.data.cta_text.name}</Button>
+      <Button className="mt-2 w-full py-2">{data?.cta_text.name}</Button>
     </div>
   );
 }

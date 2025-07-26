@@ -1,7 +1,6 @@
 "use client";
-
+import { useProduct } from "@/app/api/useProduct";
 import { Section } from "@/redux/model/publicQueryModel";
-import { useGetIELtsProductQuery } from "@/redux/query/PublicQuery";
 import Image from "next/image";
 import Title from "./shared/Title";
 
@@ -17,11 +16,11 @@ interface ExtendedSection extends Section {
 }
 
 export default function CourseLaidOut() {
-  const { data, isLoading } = useGetIELtsProductQuery();
+  const { data, isLoading } = useProduct();
 
   if (isLoading) return <h1>Loading...</h1>;
 
-  const sections = data?.data?.sections as ExtendedSection[] | undefined;
+  const sections = data?.sections as ExtendedSection[] | undefined;
 
   const featuresSection = sections?.find((item) => item.type === "features");
 
