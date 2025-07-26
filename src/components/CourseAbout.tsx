@@ -18,7 +18,7 @@ interface ExtendedSection extends Section {
 
 export default function CourseAbout() {
   const { data, isLoading } = useGetIELtsProductQuery();
-  if (isLoading) return <h1>Loading...</h1>;
+  if (isLoading) return <h1>Loading....</h1>;
 
   const sections = data?.data?.sections as ExtendedSection[] | undefined;
 
