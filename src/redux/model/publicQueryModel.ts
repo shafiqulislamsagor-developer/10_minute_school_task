@@ -48,9 +48,8 @@ interface SchemaItem {
 }
 
 interface CtaText {
-  text: string;
-  visibility: boolean;
-  link: string;
+  name: string;
+  value: string;
 }
 
 export interface Section {
