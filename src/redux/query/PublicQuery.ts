@@ -9,7 +9,7 @@ export const PublicQueryApi = createApi({
   }),
   tagTypes: ["ielts"],
   endpoints: (builder) => ({
-    getIELtsProduct: builder.query<PublicQueryModel[], void>({
+    getIELtsProduct: builder.query<PublicQueryModel, void>({
       query: () => endpoints.public.product_ielts_list,
       providesTags: ["ielts"],
     }),

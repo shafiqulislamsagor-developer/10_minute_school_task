@@ -1,13 +1,15 @@
 export interface PublicQueryModel {
-  slug: string;
-  id: number;
-  title: string;
-  description: string;
-  media: Medium[];
-  checklist: Checklist[];
-  seo: Seo;
-  cta_text: CtaText;
-  sections: Section[];
+  data: {
+    slug: string;
+    id: number;
+    title: string;
+    description: string;
+    media: Medium[];
+    checklist: Checklist[];
+    seo: Seo;
+    cta_text: CtaText;
+    sections: Section[];
+  };
 }
 
 interface Medium {
@@ -51,13 +53,14 @@ interface CtaText {
   link: string;
 }
 
-interface Section {
+export interface Section {
   id: string;
   title: string;
   description: string;
-  type: "text" | "checklist" | "step";
+  type: string;
   checklist_items?: string[];
   step_items?: StepItem[];
+  values?: Array<Record<string, unknown> | string | number | boolean | null>;
 }
 
 interface StepItem {

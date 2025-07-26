@@ -1,9 +1,11 @@
-import Test from "@/components/Test";
+import CourseHeader from "@/components/CourseHeader";
+import CourseLaidOut from "@/components/CourseLaidOut";
 
 export default function Home() {
   return (
-    <div>
-      <Test />
+    <div className="w-[67%] space-y-8">
+      <CourseHeader />
+      <CourseLaidOut />
     </div>
   );
 }

@@ -1,8 +1,7 @@
+import Navbar from "@/components/Navbar";
 import { Providers } from "@/redux/provider";
-import { store } from "@/redux/store";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Provider } from "react-redux";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -22,15 +21,23 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  trailerCourse,
 }: Readonly<{
   children: React.ReactNode;
+  trailerCourse: React.ReactNode;
 }>) {
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          <Navbar />
+          <div className="max-w-7xl justify-between mt-4 mx-auto flex items-start">
+            {children}
+            {trailerCourse}
+          </div>
+        </Providers>
       </body>
     </html>
   );
