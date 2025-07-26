@@ -1,3 +1,4 @@
+import CourseAbout from "@/components/CourseAbout";
 import CourseFeature from "@/components/CourseFeature";
 import CourseHeader from "@/components/CourseHeader";
 import CourseLaidOut from "@/components/CourseLaidOut";
@@ -10,6 +11,7 @@ export default function Home() {
       <CourseLaidOut />
       <CourseLearn />
       <CourseFeature />
+      <CourseAbout />
     </div>
   );
 }

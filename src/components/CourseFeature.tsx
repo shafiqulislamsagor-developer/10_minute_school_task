@@ -48,7 +48,7 @@ export default function CourseFeature() {
                 alt={item.title}
                 width={450}
                 height={200}
-                className="w-full h-full object-cover rounded-md"
+                className="w-full h-full border-2 border-primary object-cover rounded-md"
               />
             </div>
             <div className="flex-1  space-y-2">
