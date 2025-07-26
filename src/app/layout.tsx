@@ -1,7 +1,8 @@
 import Navbar from "@/components/Navbar";
-import { Providers } from "@/redux/provider";
+import { LangProvider } from "@/context/LangContext";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { ProductProvider } from "./api/useProduct";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -31,13 +32,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Providers>
-          <Navbar />
-          <div className="max-w-7xl justify-between mt-4 mx-auto flex items-start">
-            {children}
-            {trailerCourse}
-          </div>
-        </Providers>
+        <LangProvider>
+          <ProductProvider>
+            <Navbar />
+            <div className="max-w-7xl justify-between mt-4 mx-auto flex items-start">
+              {children}
+              {trailerCourse}
+            </div>
+          </ProductProvider>
+        </LangProvider>
       </body>
     </html>
   );

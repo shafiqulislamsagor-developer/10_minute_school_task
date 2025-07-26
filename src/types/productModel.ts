@@ -1,15 +1,13 @@
-"use client";
+// types/product.ts
 
-import { useEffect, useState } from "react";
-
-interface Media {
+export interface Media {
   name: string;
   resource_type: string;
   resource_value: string;
   thumbnail_url?: string;
 }
 
-interface ChecklistItem {
+export interface ChecklistItem {
   color: string;
   icon: string;
   id: string;
@@ -17,19 +15,19 @@ interface ChecklistItem {
   text: string;
 }
 
-interface SeoMeta {
+export interface SeoMeta {
   content: string;
   type: string;
   value: string;
 }
 
-interface SeoSchema {
+export interface SeoSchema {
   meta_name: string;
   meta_value: string;
   type: string;
 }
 
-interface Seo {
+export interface Seo {
   defaultMeta: SeoMeta[];
   description: string;
   keywords: string[];
@@ -37,12 +35,12 @@ interface Seo {
   title: string;
 }
 
-interface CtaText {
+export interface CtaText {
   name: string;
   value: string;
 }
 
-interface Offer {
+export interface Offer {
   background_color: string;
   background_img: string;
   checklist_text_color: string;
@@ -53,7 +51,7 @@ interface Offer {
   text: string;
 }
 
-interface Instructor {
+export interface Instructor {
   description: string;
   has_instructor_page: boolean;
   image: string;
@@ -62,14 +60,14 @@ interface Instructor {
   slug: string;
 }
 
-interface Feature {
+export interface Feature {
   icon: string;
   id: string;
   subtitle: string;
   title: string;
 }
 
-interface GroupJoinEngagement {
+export interface GroupJoinEngagement {
   background: {
     image: string;
     primary_color: string;
@@ -89,21 +87,21 @@ interface GroupJoinEngagement {
   top_left_icon_img: string;
 }
 
-interface Pointer {
+export interface Pointer {
   color: string;
   icon: string;
   id: string;
   text: string;
 }
 
-interface AboutItem {
+export interface AboutItem {
   description: string;
   icon: string;
   id: string;
   title: string;
 }
 
-interface FeatureExplanation {
+export interface FeatureExplanation {
   checklist: string[];
   file_type: string;
   file_url: string;
@@ -112,7 +110,7 @@ interface FeatureExplanation {
   video_thumbnail: string;
 }
 
-interface Testimonial {
+export interface Testimonial {
   description: string;
   id: string;
   name: string;
@@ -123,13 +121,13 @@ interface Testimonial {
   video_url: string;
 }
 
-interface FaqItem {
+export interface FaqItem {
   answer: string;
   id: string;
   question: string;
 }
 
-interface Section {
+export interface Section {
   type: string;
   name: string;
   description: string;
@@ -149,7 +147,7 @@ interface Section {
   )[];
 }
 
-interface OldInfo {
+export interface OldInfo {
   cat_id: number;
   course_id: number;
   platform: string;
@@ -157,7 +155,7 @@ interface OldInfo {
   slug: string;
 }
 
-interface ProductData {
+export interface ProductData {
   slug: string;
   id: number;
   title: string;
@@ -173,11 +171,11 @@ interface ProductData {
   cta_text: CtaText;
   sections: Section[];
   is_cohort_based_course: boolean;
-  secondary_cta_group: any[]; // Adjust if you have more specific data
+  secondary_cta_group: any[];
   delivery_method: string;
 }
 
-interface ApiResponse {
+export interface ApiResponse {
   code: number;
   data: ProductData;
   error: any[];
@@ -186,55 +184,8 @@ interface ApiResponse {
   status_code: number;
 }
 
-interface UseProductResult {
+export interface UseProductResult {
   data: ProductData | null;
   isLoading: boolean;
   error: Error | null;
-}
-
-export function useProduct(): UseProductResult {
-  const [data, setData] = useState<ProductData | null>(null);
-  const [isLoading, setLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
-
-  function isEqual(a: any, b: any) {
-    return JSON.stringify(a) === JSON.stringify(b);
-  }
-
-  useEffect(() => {
-    let isMounted = true;
-
-    async function fetchProduct(showLoading: boolean) {
-      if (showLoading) setLoading(true);
-      try {
-        const res = await fetch("/api/product", { cache: "no-store" });
-        if (!res.ok) throw new Error("Failed to fetch product");
-        const json: ApiResponse = await res.json();
-
-        const hasChanged = !isEqual(json.data, data);
-
-        if (isMounted && hasChanged) {
-          if (!showLoading) setLoading(true);
-          setData(json.data);
-        }
-      } catch (err) {
-        if (isMounted) setError(err as Error);
-      } finally {
-        if (isMounted) setLoading(false);
-      }
-    }
-
-    fetchProduct(true);
-
-    const timeoutId = setTimeout(() => {
-      fetchProduct(false);
-    }, 60 * 60 * 1000);
-
-    return () => {
-      isMounted = false;
-      clearTimeout(timeoutId);
-    };
-  }, []);
-
-  return { data, isLoading, error };
 }

@@ -1,8 +1,11 @@
-import { NextResponse } from "next/server";
+// app/api/product/route.ts
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET() {
-  const url =
-    "https://api.10minuteschool.com/discovery-service/api/v1/products/ielts-course?lang=en";
+export async function GET(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
+  const lang = searchParams.get("lang") || "en";
+
+  const url = `https://api.10minuteschool.com/discovery-service/api/v1/products/ielts-course?lang=${lang}`;
 
   try {
     const res = await fetch(url, {
