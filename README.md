@@ -1,37 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📘 IELTS Course Product Page
 
-## Getting Started
+This project is built as part of the **Frontend Engineer (Level 1)** assessment for **10 Minute School**.
 
-First, run the development server:
+The goal was to recreate the **IELTS Course by Munzereen Shahid** product page using **React**, **Next.js**, **TypeScript**, and **Tailwind CSS**, by consuming data from their public API.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+🔗 Reference Page: [10 Minute School – IELTS Course](https://10minuteschool.com/product/ielts-course/)
+
+---
+
+## ✅ Implemented Features
+
+All required features mentioned in the assessment have been fully implemented:
+
+- ✅ **Product Title** display from API
+- ✅ **Rich HTML Description** rendering
+- ✅ **Instructor(s)** section (`sections` where `type = "instructor"`)
+- ✅ **YouTube Course Trailer** from `media` array
+- ✅ **Hardcoded Price** display (৳1000)
+- ✅ **CTA Button with Text** (`cta_text`)
+- ✅ **Checklist** items from API
+- ✅ **What You’ll Learn** section (`sections` where `type = "pointers"`)
+- ✅ **Course Layout / Features** (`sections` where `type = "features"`)
+- ✅ **Course Details / About the Course** (`sections` where `type = "about"`)
+- ✅ **Localization** support (`lang=en` / `lang=bn`)
+- ✅ **SEO Meta Tags** setup (using `seo` from API)
+- ✅ **Responsive UI** using Tailwind CSS
+- ✅ **Reusable Components** for all sections
+- ✅ **Server-Side Rendering (SSR)**
+- ✅ **Incremental Static Regeneration (ISR)**
+- ✅ **TypeScript** with strict typings
+- ✅ **Redux** for state management
+- ✅ **Next.js server fetching** (headers + query params)
+- ✅ **Lucide Icons Integration**
+- ✅ **ShadCN UI Components**
+- ✅ **Code Splitting & Clean Structure**
+
+---
+
+## 🛠 Technologies Used
+
+- **Next.js (App Router)**
+- **React**
+- **TypeScript**
+- **Tailwind CSS**
+- **Redux** (State Management)
+- **Next.js Server Fetching**
+- **Lucide Icons**
+- **YouTube Embed**
+- **ShadCN UI** (Beautiful pre-built UI components)
+
+---
+
+## 📁 Environment Variable
+
+Create a `.env.local` file in the root directory and add the following:
+
+```env
+NEXT_PUBLIC_BASE_URL=(your provide api)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This variable is used for all API requests via `axios` or other fetching methods.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧪 Local Setup
 
-## Learn More
+```bash
+git clone https://github.com/shafiqulislamsagor-developer/10_minute_school_task.git
+cd 10_minute_school_task
+npm install
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Visit: `http://localhost:3000`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ✨ Author
 
-## Deploy on Vercel
+**Shafiqul Islam Sagor**  
+Frontend Engineer  
+[GitHub](https://github.com/shafiqulislamsagor-developer) | [LinkedIn](https://linkedin.com)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# 10_minute_school_task
+**Made with ❤️ for 10 Minute School**
