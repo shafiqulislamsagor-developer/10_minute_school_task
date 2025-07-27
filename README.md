@@ -80,7 +80,7 @@ Visit: `http://localhost:3000`
 
 **Shafiqul Islam Sagor**  
 Frontend Engineer  
-[GitHub](https://github.com/shafiqulislamsagor-developer) | [LinkedIn](https://linkedin.com)
+[GitHub](https://github.com/shafiqulislamsagor-developer) | [LinkedIn](https://www.linkedin.com/in/shafiqulislamsagor-dev/)
 
 ---
 
