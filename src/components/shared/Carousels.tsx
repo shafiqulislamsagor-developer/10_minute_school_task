@@ -11,12 +11,13 @@ import {
 import { CirclePlay } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
+import { Skeleton } from "../ui/skeleton";
 
 export function Carousels() {
   const { data, isLoading } = useProduct();
   const [playingVideo, setPlayingVideo] = useState<string | null>(null);
 
-  if (isLoading) return <h1>Loading...</h1>;
+  if (isLoading) return <Skeleton className="h-[180px] w-full" />;
 
   return (
     <Carousel className="w-full max-w-4xl">

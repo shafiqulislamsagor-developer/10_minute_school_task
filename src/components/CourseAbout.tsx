@@ -3,6 +3,7 @@ import { useProduct } from "@/app/api/useProduct";
 import { Section } from "@/redux/model/publicQueryModel";
 import { Accordions } from "./shared/Accordions";
 import Title from "./shared/Title";
+import { Skeleton } from "./ui/skeleton";
 
 export interface AboutSection {
   description: string;
@@ -17,7 +18,6 @@ interface ExtendedSection extends Section {
 
 export default function CourseAbout() {
   const { data, isLoading } = useProduct();
-  if (isLoading) return <h1>Loading....</h1>;
 
   const sections = data?.sections as ExtendedSection[] | undefined;
 
@@ -26,9 +26,21 @@ export default function CourseAbout() {
   const AboutInformation = AboutSection?.values as AboutSection[] | undefined;
   return (
     <div>
-      <Title>{AboutSection?.name}</Title>
+      {isLoading ? (
+        <Skeleton className="h-10 w-[70%]" />
+      ) : (
+        <Title>{AboutSection?.name}</Title>
+      )}
       <div className="pb-5 pt-3">
-        <Accordions values={AboutInformation} />
+        {isLoading ? (
+          <div className="space-y-2 pt-3">
+            {Array.from({ length: 4 }).map((_, idx) => (
+              <Skeleton key={idx} className="h-7 w-[90%]" />
+            ))}
+          </div>
+        ) : (
+          <Accordions values={AboutInformation} />
+        )}
       </div>
     </div>
   );
